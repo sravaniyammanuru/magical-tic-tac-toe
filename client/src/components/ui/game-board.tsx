@@ -55,7 +55,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
       <AnimatePresence>
         {winner && (
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-r from-purple/20 to-yellow-400/20 rounded-2xl flex items-center justify-center z-10"
+            className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/20 rounded-2xl flex items-center justify-center z-10"
             initial={{ opacity: 0 }}
             animate={{ 
               opacity: 1,
@@ -83,7 +83,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
         
         {isDraw && (
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-r from-purple/10 to-blue-400/10 rounded-2xl flex items-center justify-center z-10"
+            className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-sky-400/20 rounded-2xl flex items-center justify-center z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -102,14 +102,14 @@ const GameBoard: React.FC<GameBoardProps> = ({
         <motion.div
           key={index}
           className={`cell aspect-square relative cursor-pointer rounded-xl overflow-hidden bg-white/70 cell-shadow ${
-            isWinningCell(index) ? 'ring-2 ring-yellow-400 ring-offset-2 ring-offset-transparent' : ''
+            isWinningCell(index) ? 'ring-2 ring-amber-400 ring-offset-2 ring-offset-transparent animate-pulse' : ''
           }`}
           onClick={() => onCellClick(index)}
           onMouseEnter={(e) => handleCellHover(e.currentTarget)}
           whileHover={{ scale: 1.03 }}
           transition={{ type: "spring", stiffness: 300, damping: 17 }}
         >
-          <div className="cell-glow absolute inset-0 bg-lavender/20 rounded-xl transform scale-90 transition-all duration-300"></div>
+          <div className="cell-glow absolute inset-0 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-xl transform scale-95 transition-all duration-300"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <AnimatePresence>
               {cell === 'X' && (
@@ -125,7 +125,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
                 >
                   <motion.path
                     d="M18 6L6 18M6 6l12 12"
-                    stroke="#A177E0"
+                    stroke="url(#xGradient)"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -133,6 +133,12 @@ const GameBoard: React.FC<GameBoardProps> = ({
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   />
+                  <defs>
+                    <linearGradient id="xGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#8855FF" />
+                      <stop offset="100%" stopColor="#CF5FFF" />
+                    </linearGradient>
+                  </defs>
                 </motion.svg>
               )}
               
@@ -151,12 +157,18 @@ const GameBoard: React.FC<GameBoardProps> = ({
                     cx="12"
                     cy="12"
                     r="8"
-                    stroke="#95C8F0"
+                    stroke="url(#oGradient)"
                     strokeWidth="2.5"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   />
+                  <defs>
+                    <linearGradient id="oGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#3ACBFF" />
+                      <stop offset="100%" stopColor="#5D7FFF" />
+                    </linearGradient>
+                  </defs>
                 </motion.svg>
               )}
             </AnimatePresence>

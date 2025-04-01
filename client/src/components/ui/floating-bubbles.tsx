@@ -11,11 +11,11 @@ interface Bubble {
 }
 
 const colors = [
-  'bg-purple-400/30', // lavender
-  'bg-green-200/30',  // mint
-  'bg-pink-200/30',   // blush
-  'bg-blue-300/30',   // skyblue
-  'bg-yellow-400/20', // gold
+  'bg-purple-500/40', // vibrant purple
+  'bg-emerald-400/40', // vibrant mint
+  'bg-pink-400/40',   // vibrant pink
+  'bg-sky-400/40',   // vibrant sky blue
+  'bg-amber-400/30', // vibrant gold
 ];
 
 const FloatingBubbles: React.FC = () => {
@@ -61,11 +61,11 @@ const FloatingBubbles: React.FC = () => {
       ))}
       
       <motion.div
-        className="absolute w-16 h-16 rounded-full bg-yellow-400/20"
+        className="absolute w-16 h-16 rounded-full bg-amber-400/40"
         style={{ top: '50%', right: '20px' }}
         animate={{
-          opacity: [0.2, 0.6, 0.2],
-          scale: [1, 1.05, 1],
+          opacity: [0.3, 0.7, 0.3],
+          scale: [1, 1.1, 1],
         }}
         transition={{
           duration: 4,
